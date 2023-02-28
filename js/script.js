@@ -43,11 +43,6 @@ let upArrowEl = document.getElementById('up-arrow');
 let downArrowEl = document.getElementById('down-arrow');
 let imageEl = document.querySelector('.image-contained');
 
-// console.log(upArrowEl);
-// console.log(downArrowEl);
-// console.log(imageEl);
-console.log(images);
-console.log(images.length);
 
 
 // creo variabile sentinella per l'indice dell'array
@@ -55,6 +50,7 @@ let index = 1;
 
 // recupero l'immagine da visualizzare attraverso l'elemento HTML
 imageEl.src = 'img/0' + index + '.webp';
+
 
 
 // BONUS 1:
@@ -68,12 +64,9 @@ upArrowEl.addEventListener('click', function() {
         index = images.length + 1;
 
     }
-    // console.log('click');
+
     index--;
     imageEl.src = 'img/0' + index + '.webp';
-    
-    console.log(index);
-
 })
 
 // creo l'evento al click sulla freccia che va in giù
@@ -82,12 +75,8 @@ downArrowEl.addEventListener('click', function () {
     if(index == images.length) {
         index = 0;
     }
-    // console.log('click');
     index++;
     imageEl.src = 'img/0' + index + '.webp';
-
-    console.log(index);
-
 })
 
 
@@ -100,10 +89,18 @@ downArrowEl.addEventListener('click', function () {
 // tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato.
 // Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
 
-// // creo variabile per l'elemento HTML contenitore delle thumbnails
-// let thumbnailsContainerEl = document.getElementById('thumbnails-container');
+// creo variabile per l'elemento HTML contenitore delle thumbnails
+let thumbnailsContainerEl = document.getElementById('thumbnails-container');
 
-// // creo i div necessari all'interno del contenitore
-// let singleThumbnail = document.createElement('div');
-// singleThumbnail.classList.add('single-thumbnail');
-// let thumbnailsImages = document.querySelectorAll('.single-thumbnails');
+// creo i div necessari all'interno del contenitore
+for(i = 0; i < images.length; i++) {
+    let thumbnailsImage = document.createElement('img');
+    thumbnailsContainerEl.append(thumbnailsImage);
+    thumbnailsImage.classList.add('thumbnails-img');
+    thumbnailsImage.src = 'img/0' + (i + 1) + '.webp';
+    
+}
+
+if(index == (i + 1)) {
+    thumbnailsImage.classList.add('active');
+}
