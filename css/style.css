@@ -44,6 +44,7 @@
 #down-arrow {
     bottom: 0;
     left: 50%;
+    transform: translate(-50%, -4%);
 }
 
 #thumbnails-container {
@@ -59,9 +60,9 @@
     height: 100%;
     object-fit: cover;
     filter: brightness(0.4);
-    border: 2px solid white;
 }
 
 .active {
     filter: brightness(1);
+    border: 2px solid white;
 }
