@@ -1,16 +1,6 @@
 
 
-//     MILESTONE 3
-// Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva,
-// che quindi verrà visualizzata al posto della precedente.
-// BONUS 1:
-// Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagine e
-// l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
-// BONUS 2:
-// Aggiungere la visualizzazione di tutte le thumbnails sulla destra dell’immagine grande attiva,
-// come nello screenshot proposto. Tutte le miniature avranno un layer di opacità scura,
-// tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato.
-// Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
+
 // Prima di partire a scrivere codice:
 // Non lasciamoci spaventare dalla complessità apparente dell'esercizio, ma analizziamo prima,
 // come abbiamo fatto sempre, cosa ci potrebbe aspettare. Abbiamo completato ormai da qualche giorno
@@ -43,6 +33,9 @@ const images = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img
 // fornito e un semplice ciclo for che concatena un template literal (ad esempio).
 // Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1,
 // ma costruito dinamicamente attraverso JavaScript.
+//     MILESTONE 3
+// Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva,
+// che quindi verrà visualizzata al posto della precedente.
 
 // creo variabili per gli elementi HTML
 
@@ -58,6 +51,7 @@ let imageEl = document.querySelector('.image-contained');
 // creo variabile sentinella per l'indice dell'array
 let index = 1;
 
+// recupero l'immagine da visualizzare attraverso l'elemento HTML
 imageEl.src = 'img/0' + index + '.webp';
 
 // creo l'evento al click sulla freccia che va in su
@@ -65,6 +59,12 @@ upArrowEl.addEventListener('click', function() {
     // console.log('click');
     index--;
     imageEl.src = 'img/0' + index + '.webp';
+    
+    if (index == 1) {
+        index = images.length += 1;
+    }
+    console.log(index);
+
 })
 
 // creo l'evento al click sulla freccia che va in giù
@@ -72,4 +72,22 @@ downArrowEl.addEventListener('click', function () {
     // console.log('click');
     index++;
     imageEl.src = 'img/0' + index + '.webp';
+
+    if(index == images.length) {
+        index = 0;
+    }
+    console.log(index);
+
 })
+
+
+
+
+// BONUS 1:
+// Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagine e
+// l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
+// BONUS 2:
+// Aggiungere la visualizzazione di tutte le thumbnails sulla destra dell’immagine grande attiva,
+// come nello screenshot proposto. Tutte le miniature avranno un layer di opacità scura,
+// tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato.
+// Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
