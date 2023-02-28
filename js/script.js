@@ -46,6 +46,8 @@ let imageEl = document.querySelector('.image-contained');
 // console.log(upArrowEl);
 // console.log(downArrowEl);
 // console.log(imageEl);
+console.log(images);
+console.log(images.length);
 
 
 // creo variabile sentinella per l'indice dell'array
@@ -54,28 +56,36 @@ let index = 1;
 // recupero l'immagine da visualizzare attraverso l'elemento HTML
 imageEl.src = 'img/0' + index + '.webp';
 
+
+// BONUS 1:
+// Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagine e
+// l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
+
 // creo l'evento al click sulla freccia che va in su
 upArrowEl.addEventListener('click', function() {
+    // gestisco il loop infinito
+    if (index == 1) {
+        index = images.length + 1;
+
+    }
     // console.log('click');
     index--;
     imageEl.src = 'img/0' + index + '.webp';
     
-    if (index == 1) {
-        index = images.length += 1;
-    }
     console.log(index);
 
 })
 
 // creo l'evento al click sulla freccia che va in giù
 downArrowEl.addEventListener('click', function () {
+    // gestisco il loop infinito
+    if(index == images.length) {
+        index = 0;
+    }
     // console.log('click');
     index++;
     imageEl.src = 'img/0' + index + '.webp';
 
-    if(index == images.length) {
-        index = 0;
-    }
     console.log(index);
 
 })
@@ -83,11 +93,17 @@ downArrowEl.addEventListener('click', function () {
 
 
 
-// BONUS 1:
-// Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagine e
-// l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
+
 // BONUS 2:
 // Aggiungere la visualizzazione di tutte le thumbnails sulla destra dell’immagine grande attiva,
 // come nello screenshot proposto. Tutte le miniature avranno un layer di opacità scura,
 // tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato.
 // Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
+
+// // creo variabile per l'elemento HTML contenitore delle thumbnails
+// let thumbnailsContainerEl = document.getElementById('thumbnails-container');
+
+// // creo i div necessari all'interno del contenitore
+// let singleThumbnail = document.createElement('div');
+// singleThumbnail.classList.add('single-thumbnail');
+// let thumbnailsImages = document.querySelectorAll('.single-thumbnails');

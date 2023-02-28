@@ -5,20 +5,18 @@
 }
 
 #container {
-    max-width: 1000px;
-    height: 100%;
+    display: flex;
+    max-width: 1200px;
     margin: 100px auto;
 }
 
 #img-container {
     position: relative;
-    height: 100%;
 }
 
 .image-contained {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 #up-arrow, #down-arrow {
@@ -42,4 +40,11 @@
     transform: translate(-50%, -10%);
     bottom: 0;
     left: 50%;
+}
+
+#thumbnails-container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 100%;
 }
