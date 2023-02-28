@@ -52,37 +52,6 @@ let index = 1;
 imageEl.src = 'img/0' + index + '.webp';
 
 
-
-// BONUS 1:
-// Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagine e
-// l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
-
-// creo l'evento al click sulla freccia che va in su
-upArrowEl.addEventListener('click', function() {
-    // gestisco il loop infinito
-    if (index == 1) {
-        index = images.length + 1;
-
-    }
-
-    index--;
-    imageEl.src = 'img/0' + index + '.webp';
-})
-
-// creo l'evento al click sulla freccia che va in giù
-downArrowEl.addEventListener('click', function () {
-    // gestisco il loop infinito
-    if(index == images.length) {
-        index = 0;
-    }
-    index++;
-    imageEl.src = 'img/0' + index + '.webp';
-})
-
-
-
-
-
 // BONUS 2:
 // Aggiungere la visualizzazione di tutte le thumbnails sulla destra dell’immagine grande attiva,
 // come nello screenshot proposto. Tutte le miniature avranno un layer di opacità scura,
@@ -93,14 +62,51 @@ downArrowEl.addEventListener('click', function () {
 let thumbnailsContainerEl = document.getElementById('thumbnails-container');
 
 // creo i div necessari all'interno del contenitore
-for(i = 0; i < images.length; i++) {
-    let thumbnailsImage = document.createElement('img');
+for (i = 0; i < images.length; i++) {
+    thumbnailsImage = document.createElement('img');
     thumbnailsContainerEl.append(thumbnailsImage);
     thumbnailsImage.classList.add('thumbnails-img');
     thumbnailsImage.src = 'img/0' + (i + 1) + '.webp';
-    
 }
 
-if(index == (i + 1)) {
-    thumbnailsImage.classList.add('active');
-}
+
+
+let allImages = document.querySelectorAll('.thumbnails-img');
+allImages[index - 1].classList.add('active');
+
+
+// BONUS 1:
+// Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagine e
+// l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
+
+// creo l'evento al click sulla freccia che va in su
+upArrowEl.addEventListener('click', function() {
+    allImages[index - 1].classList.remove('active');
+
+    // gestisco il loop infinito
+    if (index == 1) {
+        index = images.length + 1;
+
+    }
+
+    index--;
+    imageEl.src = 'img/0' + index + '.webp';
+    allImages[index - 1].classList.add('active');
+})
+
+// creo l'evento al click sulla freccia che va in giù
+downArrowEl.addEventListener('click', function () {
+    allImages[index - 1].classList.remove('active');
+
+    // gestisco il loop infinito
+    if(index == images.length) {
+        index = 0;
+    }
+    index++;
+    imageEl.src = 'img/0' + index + '.webp';
+    allImages[index - 1].classList.add('active');
+})
+
+
+
+
