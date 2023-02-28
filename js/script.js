@@ -1,9 +1,5 @@
 
-//     MILESTONE 2
-// Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell'array
-// fornito e un semplice ciclo for che concatena un template literal (ad esempio).
-// Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1,
-// ma costruito dinamicamente attraverso JavaScript.
+
 //     MILESTONE 3
 // Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva,
 // che quindi verrà visualizzata al posto della precedente.
@@ -40,3 +36,40 @@ const images = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img
 //     console.log(images[i]);
 // }
 
+
+
+//     MILESTONE 2
+// Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell'array
+// fornito e un semplice ciclo for che concatena un template literal (ad esempio).
+// Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1,
+// ma costruito dinamicamente attraverso JavaScript.
+
+// creo variabili per gli elementi HTML
+
+let upArrowEl = document.getElementById('up-arrow');
+let downArrowEl = document.getElementById('down-arrow');
+let imageEl = document.querySelector('.image-contained');
+
+// console.log(upArrowEl);
+// console.log(downArrowEl);
+// console.log(imageEl);
+
+
+// creo variabile sentinella per l'indice dell'array
+let index = 1;
+
+imageEl.src = 'img/0' + index + '.webp';
+
+// creo l'evento al click sulla freccia che va in su
+upArrowEl.addEventListener('click', function() {
+    // console.log('click');
+    index--;
+    imageEl.src = 'img/0' + index + '.webp';
+})
+
+// creo l'evento al click sulla freccia che va in giù
+downArrowEl.addEventListener('click', function () {
+    // console.log('click');
+    index++;
+    imageEl.src = 'img/0' + index + '.webp';
+})
