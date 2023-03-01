@@ -66,7 +66,8 @@ for (i = 0; i < images.length; i++) {
     thumbnailsImage = document.createElement('img');
     thumbnailsContainerEl.append(thumbnailsImage);
     thumbnailsImage.classList.add('thumbnails-img');
-    thumbnailsImage.src = 'img/0' + (i + 1) + '.webp';
+    thumbnailsImage.src = images[i];
+    thumbnailsImage.alt = ('immagine thumbnail');
 }
 
 
